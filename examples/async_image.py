@@ -3,8 +3,7 @@ import wolfram, asyncio
 app = wolfram.AsyncApp("APP_ID")
 
 async def getQuery():
-    data = await app.talk("Population of America")
-    print(data)
+    data = await app.simple("Population of America")
 
 loop = asyncio.get_event_loop()
 

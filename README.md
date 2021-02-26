@@ -115,4 +115,3 @@ try:
 finally:
     loop.close()
 ```
-**(!)** The `SimpleAPI` is not supported in `async` yet! 

@@ -1,4 +1,4 @@
-import aiohttp, asyncio, requests, json
+import aiohttp, asyncio, requests, json, aiofiles
 
 from .errors import *
 
@@ -27,14 +27,28 @@ class AsyncApp:
 
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as request:
-                return json.loads(await request.text())
+                return await request.text()
+    
+    async def create_simple_request(self, **kwargs):
+        async with aiohttp.ClientSession() as session:
+            url = self.SIMPLE_BASE + "?" + '&'.join(f"{i}={kwargs[i]}" for i in kwargs) + "&appid=" + self.id
+            async with session.get(url) as request:
+                return await request.read()
+
+    async def simple(self, query:lambda arg:fix_format(arg), fp:str="wolfram_content"):
+        _data = await self.create_simple_request(i=query)
+
+        f = await aiofiles.open(f'{fp}.png', mode='wb+')
+        await f.write(_data)
+        await f.close()
 
     async def full(self, query:lambda arg:fix_format(arg)):
         _data = await self.create_request(self.FULL_BASE, input=fix_format(query), output="json")
-        return _data
+        return json.loads(_data)
 
     async def short(self, query:lambda arg:fix_format(arg)):
-        return await (await self.create_request(self.SHORT_BASE, i=query)).text()
+        return await self.create_request(self.SHORT_BASE, i=query)
 
     async def talk(self, query:lambda arg:fix_format(arg)):
-        return (await self.create_request(self.CONV_BASE, i=query, s=5)).json()
+        _data = await self.create_request(self.CONV_BASE, i=query, s=5)
+        return json.loads(_data)
