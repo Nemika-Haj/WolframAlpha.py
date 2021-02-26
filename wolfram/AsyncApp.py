@@ -1,4 +1,4 @@
-import aiohttp, asyncio, requests
+import aiohttp, asyncio, requests, json
 
 from .errors import *
 
@@ -27,7 +27,7 @@ class AsyncApp:
 
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as request:
-                return await request.text()
+                return json.loads(await request.text())
 
     async def full(self, query:lambda arg:fix_format(arg)):
         _data = await self.create_request(self.FULL_BASE, input=fix_format(query), output="json")

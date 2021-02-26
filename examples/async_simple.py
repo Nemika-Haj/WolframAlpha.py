@@ -1,12 +1,10 @@
-import wolfram, asyncio, json
+import wolfram, asyncio
 
 app = wolfram.AsyncApp("APP_ID")
 
 async def getQuery():
-    data = json.loads(await app.full("Population of America"))
-    print(data)
-    with open("wolfram.json", "w+") as f:
-        json.dump(data, f, indent=4)
+    data = await app.full("Population of America")
+    print(type(data))
 
 loop = asyncio.get_event_loop()
 
