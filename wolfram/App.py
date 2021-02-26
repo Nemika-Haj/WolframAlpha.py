@@ -10,6 +10,10 @@ def fix_format(string):
         '"': '\"'
     }
 
+    for key in keys:
+        string.replace(key, keys[key])
+    return string
+
 class App:
     def __init__(self, appID):
         self.id = appID

@@ -4,4 +4,5 @@ __license__ = "MIT"
 __name__ = "wolfram.py"
 
 from .App import App
+from .AsyncApp import AsyncApp
 from . import errors

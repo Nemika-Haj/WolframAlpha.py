@@ -1,8 +1,4 @@
 
 .vscode/settings.json
-dist/WolframAlpha.py-1.0.0.tar.gz
-WolframAlpha.py.egg-info/dependency_links.txt
-WolframAlpha.py.egg-info/requires.txt
-WolframAlpha.py.egg-info/PKG-INFO
-WolframAlpha.py.egg-info/SOURCES.txt
-WolframAlpha.py.egg-info/top_level.txt
+dist
+WolframAlpha.py.egg-info
