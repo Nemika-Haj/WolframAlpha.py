@@ -6,12 +6,12 @@ This is an API wrapper for the [Wolfram Alpha API](https://www.wolframalpha.com/
 
 **Linux & macOS**
 ```
-python3 -m pip install wolfram.py
+python3 -m pip install wolframalpha.py
 ```
 
 **Windows**
 ```
-py -3 -m pip install wolfram.py
+py -3 -m pip install wolframalpha.py
 ```
 
 You can always use the Github Dev version before the release on Pypi by cloning the repo and upgrading the package locally.
