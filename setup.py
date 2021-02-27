@@ -6,7 +6,7 @@ with open("README.md", "r") as f:
 setup(
   name = 'WolframAlpha.py',
   packages = ['wolfram'],
-  version = '1.1.3',
+  version = '1.1.7',
   license='MIT',
   description = 'A WolframAlpha API Wrapper for Python.',
   author = 'Nemika',
@@ -16,9 +16,7 @@ setup(
   long_description=readme,
   long_description_content_type="text/markdown",
   install_requires=[
-          'requests',
-          'aiohttp',
-          'asyncio',
+          'aiohttp>=3.6.0,<3.8.0',
           'aiofiles'
       ],
   classifiers=[

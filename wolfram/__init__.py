@@ -1,7 +1,7 @@
-__version__ = "1.1.3"
+__version__ = "1.1.7"
 __author__ = "Nemika"
 __license__ = "MIT"
-__name__ = "wolfram.py"
+__name__ = "wolframalpha.py"
 
 from .App import App
 from .AsyncApp import AsyncApp
