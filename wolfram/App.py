@@ -12,7 +12,7 @@ def fix_format(string):
     }
 
     for key in keys:
-        string.replace(key, keys[key])
+        string = string.replace(key, keys[key])
     return string
 
 class App:
@@ -26,7 +26,8 @@ class App:
     def create_request(self, BASE, **kwargs):
         return requests.get(BASE + "?" + '&'.join(f"{i}={kwargs[i]}" for i in kwargs) + "&appid=" + self.id)
 
-    def simple(self, query:lambda arg:fix_format(arg), fp:lambda arg:str(arg)="wolframpy_content"):
+    def simple(self, query:str, fp:str="wolframpy_content"):
+        query = fix_format(query)
         _data = self.create_request(self.SIMPLE_BASE, i=query)
 
         if _data.status_code == 200:
@@ -40,11 +41,14 @@ class App:
         if _data.status_code == 501:
             raise InputError("Could not understand input.")
 
-    def full(self, query:lambda arg:fix_format(arg)):
+    def full(self, query:str):
+        query = fix_format(query)
         return self.create_request(self.FULL_BASE, input=query, output="json").json()
 
-    def short(self, query:lambda arg:fix_format(arg)):
+    def short(self, query:str):
+        query = fix_format(query)
         return self.create_request(self.SHORT_BASE, i=query).text
 
-    def talk(self, query:lambda arg:fix_format(arg)):
+    def talk(self, query:str):
+        query = fix_format(query)
         return self.create_request(self.CONV_BASE, i=query, s=5).json()
