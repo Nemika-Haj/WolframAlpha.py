@@ -1,4 +1,4 @@
-__version__ = "1.1.7"
+__version__ = "1.1.8"
 __author__ = "Nemika"
 __license__ = "MIT"
 __name__ = "wolframalpha.py"

@@ -7,7 +7,8 @@ def fix_format(string):
         " ": "+",
         "/": "\/",
         "'": "\'",
-        '"': '\"'
+        '"': '\"',
+        "+": "%2B"
     }
 
     for key in keys:
